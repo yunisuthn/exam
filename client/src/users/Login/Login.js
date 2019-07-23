@@ -32,6 +32,7 @@ export default class Login extends React.Component {
             window.location = '/dashboard'
         }, function (error) {
             console.log(error);
+            document.getElementById("error").innerHTML = "Email ou mot de passe incorrect !"
             return;
         })
     }
@@ -52,6 +53,9 @@ export default class Login extends React.Component {
                     <MDBRow>
                         <MDBCol md="6">
 
+                        <FormGroup  bsSize="large">
+                                <FormLabel id='error'></FormLabel>
+                            </FormGroup>
                             <FormGroup controlId="email" bsSize="large">
                                 <FormLabel>Email</FormLabel>
                                 <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange} />

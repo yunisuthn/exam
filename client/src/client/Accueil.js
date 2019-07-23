@@ -40,7 +40,7 @@ class Accueil extends Component {
                 (this.state.profil.length > 0) ? (this.state.profil.map((obj) => {
 
                     return (
-                        <MDBCol  id='colonne'className='col-md-4'>
+                        <MDBCol  id='colonne'className='col-md-3'>
                             <MDBCard  id='carte' key={obj._id}>
                                 <MDBCardImage id='sary'cascade className="img-fluid" src={'http://localhost:8080/photos/' + obj.photo_profil} alt="pdp" />
                                 <MDBCardBody cascade>

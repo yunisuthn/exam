@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express();
 const methodOverride = require('method-override')
 const mongoose = require("mongoose");
-
+const config = require('./config/config')
 
 //On définit notre objet express nommé app
 const fileUpload = require('express-fileupload');
@@ -18,7 +18,7 @@ app.use(cors())
 app.use(fileUpload());
 app.use('/public', express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost/exam').then(() => {
+mongoose.connect('mongodb://localhost:27017/exam').then(() => {
     console.log('Connected to mongoDB')
 }).catch(e => {
     console.log('Error while DB connecting');
