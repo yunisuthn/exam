@@ -41,7 +41,13 @@ export default class Signup extends React.Component {
         API.signup(_send).then(function (data) {
             //localStorage.setItem('token', data.data.token);
             localStorage.setItem('id', data.data.id);
-            window.location = '/dashboard'
+            if(!data.data.id){
+                window.location = '/'
+                document.getElementById("error").innerHTML = "Email ou mot de passe incorrect !"
+            }else{
+                window.location = '/dashboard'
+            }
+            
             // window.location = `/dashboard/${data.data.id}`
         }, function (error) {
             console.log(error);
@@ -65,33 +71,36 @@ export default class Signup extends React.Component {
                         <MDBCol md="6">
 
                             <FormGroup controlId="nom" bsSize="large">
-                                <FormLabel>Nom</FormLabel>
+                                <FormLabel className='couleur'>Nom</FormLabel>
                                 <FormControl autoFocus type="text" value={this.state.nom} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup controlId="prenom" bsSize="large">
-                                <FormLabel>Prénom</FormLabel>
+                                <FormLabel className='couleur'>Prénom</FormLabel>
                                 <FormControl autoFocus type="text" value={this.state.prenom} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup controlId="email" bsSize="large">
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel className='couleur'>Email</FormLabel>
                                 <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup controlId="specialite" bsSize="large">
-                                <FormLabel>Spécialité</FormLabel>
+                                <FormLabel className='couleur'>Spécialité</FormLabel>
                                 <FormControl autoFocus type="text" value={this.state.specialite} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup controlId="password" bsSize="large">
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className='couleur'>Password</FormLabel>
                                 <FormControl value={this.state.password} onChange={this.handleChange} type="password" />
                             </FormGroup>
                             <FormGroup controlId="cpassword" bsSize="large">
-                                <FormLabel>Confirm Password</FormLabel>
+                                <FormLabel className='couleur'>Confirm Password</FormLabel>
                                 <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password" />
                             </FormGroup>
 
+                            <FormGroup  bsSize="large">
+                                <FormLabel id='error'></FormLabel>
+                            </FormGroup>
                             <Button
                                 type="submit"
-                                onClick={this.send}
+                                onClick={this.send}className='couleur'
                             >
                                 Inscription
                             </Button>

@@ -42,11 +42,6 @@ class PostFrontToBack extends React.Component {
       [event.target.name]: event.target.value
     })
   }
-  disconnect = event => {
-    API.logout();
-    window.location = "/";
-  }
-
 
   handleUploadImage(ev) {
 
@@ -94,21 +89,21 @@ class PostFrontToBack extends React.Component {
                   <MDBCol md="6">
 
                       <FormGroup controlId="titre" bsSize="large">
-                          <FormLabel>Titre:</FormLabel>
+                          <FormLabel className='couleur'>Titre:</FormLabel>
                           <FormControl autoFocus type="text"
                             value={this.state.value}
                             onChange={this.onChange}
                             name="titre"/>
                       </FormGroup>
                       <FormGroup controlId="description" bsSize="large">
-                          <FormLabel>Description:</FormLabel>
+                          <FormLabel className='couleur'>Description:</FormLabel>
                           <FormControl type="textarea"
                             value={this.state.value}
                             onChange={this.onChange}
                             name="description" />
                       </FormGroup>
                       <FormGroup controlId="date" bsSize="large">
-                          <FormLabel>Date:</FormLabel>
+                          <FormLabel className='couleur'>Date:</FormLabel>
                           <FormControl type="text"
                             value={this.state.value}
                             onChange={this.onChange}
@@ -116,35 +111,35 @@ class PostFrontToBack extends React.Component {
                       </FormGroup>
 
                       <FormGroup controlId="debut" bsSize="large">
-                          <FormLabel>Horaire début:</FormLabel>
+                          <FormLabel className='couleur'>Horaire début:</FormLabel>
                           <FormControl type="text"
                             value={this.state.value}
                             onChange={this.onChange}
                             name="debut" />
                       </FormGroup>
                       <FormGroup controlId="duree" bsSize="large">
-                          <FormLabel>Durée:</FormLabel>
+                          <FormLabel className='couleur'>Durée:</FormLabel>
                           <FormControl type="text"
                             value={this.state.value}
                             onChange={this.onChange}
                             name="duree" />
                       </FormGroup>
                       <FormGroup controlId="placedispo" bsSize="large">
-                          <FormLabel>Nombre place disponible:</FormLabel>
+                          <FormLabel className='couleur'>Nombre place disponible:</FormLabel>
                           <FormControl type="text"
                             value={this.state.value}
                             onChange={this.onChange}
                             name="placedispo" />
                       </FormGroup>
                       <FormGroup controlId="placeres" bsSize="large">
-                          <FormLabel>Nbre place reservé:</FormLabel>
+                          <FormLabel className='couleur'>Nbre place reservé:</FormLabel>
                           <FormControl type="text"
                             value={this.state.value}
                             onChange={this.onChange}
                             name="placeres" />
                       </FormGroup>
                       <FormGroup controlId="prix" bsSize="large">
-                          <FormLabel>Prix:</FormLabel>
+                          <FormLabel className='couleur'>Prix:</FormLabel>
                           <FormControl type="text"
                             value={this.state.value}
                             onChange={this.onChange}
@@ -158,19 +153,19 @@ class PostFrontToBack extends React.Component {
                            name="photo_profil" />
                       </FormGroup>
 
-                      <Button variant="primary"
+                      <Button variant="primary" className='couleur'
                           onClick={this.handleUploadImage}
                           type="submit">
                            Ajouter
                       </Button>
 
-                      <Button
+                      <Button className='couleur'
                           onClick={this.disconnect}
                           type="submit"
                       >
                           Deconnecter
                       </Button>
-                      <Button
+                      <Button className='couleur'
                           onClick={this.liste}
                           type="submit"
                       >

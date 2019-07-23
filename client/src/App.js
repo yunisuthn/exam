@@ -1,23 +1,14 @@
 import React from 'react';
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink } from 'mdbreact';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink} from 'mdbreact';
 //import { BrowserRouter as Router } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Acceuil from './components/Accueil';
-import Login from './users/Login/Login';
+import App from './App.jsx';
 import PostFrontToBack from './users/Dashboard/postWithUpload_frontToBack';
-import './App.css'
-import AfficheProfil from './users/Dashboard/AfficheProfil'
-
-// import { Dashboard } from './users/Dashboard/Dashboard.js';
-import Signup from './users/Signup/Signup';
 import { PrivateRoute } from './users/PrivateRoute.js';
-import Inscrire from './components/Inscrire';
-import Edit from './components/Edit';
+import './App.css'
 
-import Footer from './components/Footer';
-
-class App extends React.Component {
+class Appp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +27,7 @@ class App extends React.Component {
     return (
       <div>
         <Router>
+
           <div>
             <header>
               <MDBNavbar className='nav' dark expand="md">{/* color="default-color" */}
@@ -55,26 +47,20 @@ class App extends React.Component {
                 </MDBCollapse>
               </MDBNavbar>
             </header>
-            <Switch className='margin'>
-              <Route exact path='/' component={Acceuil} />
+            <div className='col-md-6 margin'>
+            </div>
+            <Switch className='col-md-3 margin'>
+              <Route exact path='/' component={App} />
               <PrivateRoute path="/dashboard" component={PostFrontToBack} />
-              <Route path='/login' component={Login} />
-              <Route path='/register' component={Signup} />
-              <Route path='/inscrire' component={Inscrire} />
 
               {/* <PrivateRoute path="/profil" component={ListTous} /> */}
-              <PrivateRoute path="/userArticle" component={AfficheProfil} />
-              <PrivateRoute path="/edit/:id" component={Edit} />
               {/* <PrivateRoute path='/dashboard' component={Dashboard} /> */}
             </Switch>
           </div>
         </Router>
-        <div>
-        <Footer/>
-        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default Appp;

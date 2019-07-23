@@ -109,19 +109,19 @@ export default class Edit extends Component {
   render() {
     return (
         <div style={{ marginTop: 10 }}>
-            <h3 align="center">Editer atelier</h3>
+            <h3 align="center" className='couleur'>Editer atelier</h3>
             <form onSubmit={this.onSubmit}>
                 <div className="form-group">
-                    <label>Titre:  </label>
+                    <label className='couleur'>Titre:  </label>
                     <input 
                       type="text" 
-                      className="form-control" 
-                      value={this.state.titre}
+                      className="form-control " 
+                      value={this.state.titre} 
                       onChange={this.onChangeTitre}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Description: </label>
+                <div className="form-group" >
+                    <label className='couleur'>Description: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.description}
@@ -129,7 +129,7 @@ export default class Edit extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Date: </label>
+                    <label className='couleur'>Date: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.date}
@@ -138,7 +138,7 @@ export default class Edit extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Début: </label>
+                    <label className='couleur'>Début: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.debut}
@@ -146,7 +146,7 @@ export default class Edit extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Durée: </label>
+                    <label className='couleur'>Durée: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.duree}
@@ -154,7 +154,7 @@ export default class Edit extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Place Dispo: </label>
+                    <label className='couleur'>Place Dispo: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.placedispo}
@@ -162,7 +162,7 @@ export default class Edit extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Place reserv: </label>
+                    <label className='couleur'>Place reserv: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.placeres}
@@ -170,7 +170,7 @@ export default class Edit extends Component {
                       />
                 </div>
                 <div className="form-group">
-                    <label>Prix: </label>
+                    <label className='couleur'>Prix: </label>
                     <input type="text" 
                       className="form-control"
                       value={this.state.prix}
@@ -180,7 +180,7 @@ export default class Edit extends Component {
                 <div className="form-group">
                     <input type="submit" 
                       value="Update Business" 
-                      className="btn btn-primary"/>
+                      className="btn btn-primary couleur"/>
                 </div>
             </form>
         </div>

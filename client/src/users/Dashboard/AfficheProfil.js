@@ -30,7 +30,23 @@ export default class AfficheProfil extends Component {
         window.location = "/dashboard";
       }
     
-    liste() {
+      getInitialState= () => {
+        return {checked: true}
+      }
+      handleCheck = (id) => {
+        //this.setState({checked: !this.state.checked});
+        console.log('checked == ', id);
+        
+        localStorage.setItem('checked', id);
+        
+      }
+    liste() {       
+         var msg;
+        if (this.state.checked) {
+          msg = "checked";
+        } else {
+          msg = "unchecked";
+        }
         return <table className="table">
                     <thead>
                         <tr>
@@ -54,6 +70,10 @@ export default class AfficheProfil extends Component {
                                     </td>
                                     <td>
                                         <Link to={"/edit/"+ obj._id} className="btn btn-primary">Edit</Link>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" onChange={()=>{this.handleCheck(obj._id)}} defaultChecked={this.state.checked}/>
+                                        <p>this box is {msg}.</p>
                                     </td>
                                     {console.log(obj)}
                                 </tr>

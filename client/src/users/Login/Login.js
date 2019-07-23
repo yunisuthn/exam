@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import API from '../../utils/API';
 
 import { MDBContainer, MDBRow, MDBCol} from 'mdbreact';
-
+import Bienvenu from '../../components/Bienvenu'
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -32,6 +32,7 @@ export default class Login extends React.Component {
             window.location = '/dashboard'
         }, function (error) {
             console.log(error);
+            document.getElementById("error").innerHTML = "Email ou mot de passe incorrect !"
             return;
         })
     }
@@ -47,23 +48,29 @@ export default class Login extends React.Component {
     render() {
         return (
             <div className="Login">
-
+                <div className=' col-md-8'>
+                    <Bienvenu/>
+                </div>
                 <MDBContainer>
                     <MDBRow>
-                        <MDBCol md="6">
+                        <MDBCol md="6" className='login' >
 
-                            <FormGroup controlId="email" bsSize="large">
-                                <FormLabel>Email</FormLabel>
+                            <FormGroup controlId="email"  bsSize="large">
+                                <FormLabel className='couleur'>Email</FormLabel>
                                 <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange} />
                             </FormGroup>
                             <FormGroup controlId="password" bsSize="large">
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className='couleur'>Password</FormLabel>
                                 <FormControl value={this.state.password} onChange={this.handleChange} type="password" />
                             </FormGroup>
 
+                            <FormGroup  bsSize="large">
+                                <FormLabel id='error'></FormLabel>
+                            </FormGroup>
                             <Button variant="primary"
                                 onClick={this.send}
-                                type="submit">
+                                className='couleur boutton'
+                                type="submit"> 
                                  Connexion
                             </Button>
                             {/* <Button
