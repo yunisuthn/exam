@@ -12,6 +12,20 @@ export default class AfficheProfil extends Component {
         this.state = { profil: [] };
 
     }
+    getInitialState= () => {
+        return {checked: true}
+      }
+      handleCheck = () => {
+        this.setState({checked: !this.state.checked});
+      }
+      /* render=  ()=> {
+        var msg;
+        if (this.state.checked) {
+          msg = "checked";
+        } else {
+          msg = "unchecked";
+        }
+    } */
     componentDidMount() {
         axios.get(`http://localhost:8080/userArticle/${localStorage.id}`)
             .then(response => {
@@ -31,10 +45,16 @@ export default class AfficheProfil extends Component {
       }
     
     liste() {
+        var msg;
+        if (this.state.checked) {
+          msg = "checked";
+        } else {
+          msg = "unchecked";
+        }
         return <table className="table">
                     <thead>
                         <tr>
-                            <th>NOM</th>
+                            <th>TITRE</th>
                             <th>PRIX</th>
                             <th>DESCRIPTION</th>
                             <th>PHOTO</th>
@@ -46,7 +66,7 @@ export default class AfficheProfil extends Component {
                             (this.state.profil.length > 0) ? (this.state.profil.map((obj) => {
                                 
                                 return <tr key={obj._id}>
-                                    <td>{obj.nom}</td>
+                                    <td>{obj.titre}</td>
                                     <td>{obj.prix}</td>
                                     <td>{obj.description}</td>
                                     <td>
@@ -54,6 +74,10 @@ export default class AfficheProfil extends Component {
                                     </td>
                                     <td>
                                         <Link to={"/edit/"+ obj._id} className="btn btn-primary">Edit</Link>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+                                        <p>this box is {msg}.</p>
                                     </td>
                                     {console.log(obj)}
                                 </tr>
@@ -79,3 +103,5 @@ export default class AfficheProfil extends Component {
         );
     }
 }
+
+

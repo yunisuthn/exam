@@ -42,10 +42,13 @@ export default class Signup extends React.Component {
             //localStorage.setItem('token', data.data.token);
             localStorage.setItem('id', data.data.id);
             window.location = '/dashboard'
+            
             // window.location = `/dashboard/${data.data.id}`
-        }, function (error) {
-            console.log(error);
-            return;
+        }, function (err) {
+            window.location = '/register'
+            console.log(err);
+            return(console.log(err)
+            );
         })
     }
     handleChange = event => {

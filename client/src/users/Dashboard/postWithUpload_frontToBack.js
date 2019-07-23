@@ -82,7 +82,7 @@ class PostFrontToBack extends React.Component {
   }
 
   componentDidMount() {
-    console.log('this.props.location.pathname', localStorage.id);
+    console.log('localStorage.id === ', localStorage.id);
   }
 
   render() {

@@ -105,6 +105,8 @@ exports.login = (req, res) => {
                     "text": "Erreur interne"
                 })
             } else if (!user) {
+                console.log(user);
+                
                 res.status(401).json({
                     "text": "L'utilisateur n'existe pas"
                 })
@@ -301,7 +303,7 @@ exports.update = (req, res) => {
     }
     // Find note and update it with the request body
     Atelier.findByIdAndUpdate(req.params.noteId, {
-        titre: req.body.article || "Untitled Note",
+        titre: req.body.titre || "Untitled Note",
         description: req.body.description,
         date: req.body.date,
         debut: req.body.debut,
