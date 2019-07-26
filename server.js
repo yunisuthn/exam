@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express();
 const methodOverride = require('method-override')
 const mongoose = require("mongoose");
-const config = require('./config/config')
+
 
 //On définit notre objet express nommé app
 const fileUpload = require('express-fileupload');
@@ -18,15 +18,21 @@ app.use(cors())
 app.use(fileUpload());
 app.use('/public', express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost:27017/exam').then(() => {
+mongoose.connect('mongodb://localhost/exam').then(() => {
     console.log('Connected to mongoDB')
 }).catch(e => {
     console.log('Error while DB connecting');
     console.log(e);
 });
 
+/* mongoose.connect('mongodb+srv://ony:sayna123456@cluster0-lwzb3.mongodb.net/test?retryWrites=true&w=majority').then(() => {
+    console.log('Connected to mongoDB')
+}).catch(e => {
+    console.log('Error while DB connecting');
+    console.log(e);
+}); */
 
-//Body Parser
+//Body Parser     mongodb+srv://ony:<password>@cluster0-lwzb3.mongodb.net/test?retryWrites=true&w=majority
 var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
@@ -52,5 +58,5 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to Profil app"});
 });
 //Définition et mise en place du port d'écoute
-var port = 8080;
+var port = 8081;
 app.listen(port, () => console.log(`Listening on port ${port}`));

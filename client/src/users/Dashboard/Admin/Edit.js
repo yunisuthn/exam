@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import TopNavigation from './TopNavigation';
+import SideNavigation from './SlideNavigation';
+
+import Footer from '../../../tenaComponent/Footer';
 export default class Edit extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +33,7 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
-      axios.get('http://localhost:8080/article/'+this.props.match.params.id)
+      axios.get('http://localhost:8081/article/'+this.props.match.params.id)
           .then(response => {
                 this.setState({ 
                     titre:response.data.titre,
@@ -100,7 +104,7 @@ export default class Edit extends Component {
       placeres: this.state.placeres,
       prix: this.state.prix
     };
-    axios.post('http://localhost:8080/article/'+this.props.match.params.id, obj)
+    axios.post('http://localhost:8081/article/'+this.props.match.params.id, obj)
         .then(res => console.log(res.data));
     
     //this.props.history.push('/');
@@ -108,82 +112,99 @@ export default class Edit extends Component {
  
   render() {
     return (
-        <div style={{ marginTop: 10 }}>
-            <h3 align="center">Editer atelier</h3>
+            <div className="row ">
+                <div className='col-md-3 divA'>
+                    <SideNavigation />
+                </div>
+                <div className=' col-md-8 divB'>
+                    <TopNavigation />
+                <div className=' divC '>
+                        <div className="container span1">
+
+                        <div style={{ marginTop: 10 }}>
+            <h3 align="center" className='couleur'>Editer atelier</h3>
             <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                    <label>Titre:  </label>
+                <div className="row form-group">
+                    <label className='couleur col-md-4'>Titre:  </label>
                     <input 
                       type="text" 
-                      className="form-control" 
-                      value={this.state.titre}
+                      className="form-control col-md-4 " 
+                      value={this.state.titre} 
                       onChange={this.onChangeTitre}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Description: </label>
+                <div className="form-group row" >
+                    <label className='couleur col-md-4'>Description: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.description}
                       onChange={this.onChangeDescription}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Date: </label>
+                <div className="form-group row">
+                    <label className='couleur col-md-4'>Date: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.date}
                       onChange={this.onChangeDate}
                       />
                 </div>
 
-                <div className="form-group">
-                    <label>Début: </label>
+                <div className="form-group row">
+                    <label className='couleur col-md-4'>Début: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.debut}
                       onChange={this.onChangeDebut}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Durée: </label>
+                <div className="form-group row">
+                    <label className='couleur col-md-4'>Durée: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.duree}
                       onChange={this.onChangeDuree}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Place Dispo: </label>
+                <div className="form-group row">
+                    <label className='couleur col-md-4'>Place Dispo: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.placedispo}
                       onChange={this.onChangePlacedispo}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Place reserv: </label>
+                <div className="form-group row">
+                    <label className='couleur col-md-4'>Place reserv: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.placeres}
                       onChange={this.onChangePlaceres}
                       />
                 </div>
-                <div className="form-group">
-                    <label>Prix: </label>
+                <div className="form-group row">
+                    <label className='couleur col-md-4'>Prix: </label>
                     <input type="text" 
-                      className="form-control"
+                      className="form-control col-md-4"
                       value={this.state.prix}
                       onChange={this.onChangePrix}
                       />
                 </div>
                 <div className="form-group">
                     <input type="submit" 
-                      value="Update Business" 
-                      className="btn btn-primary"/>
+                      value="Modifier" 
+                      className="btn btn-primary couleur"/>
                 </div>
             </form>
         </div>
+                </div>
+                    </div>
+                   <div className='row divD span3 cher'>
+          <Footer />
+                </div>
+                </div>
+
+            </div>
     )
   }
 }

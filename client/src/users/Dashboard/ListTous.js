@@ -11,7 +11,7 @@ export default class ListTous extends Component {
 
     }
     componentDidMount() {
-        axios.get('http://localhost:8080/article')
+        axios.get('http://localhost:8081/article')
             .then(response => {
                 console.log('i am a response', response)
                 this.setState({ profil: response.data });
@@ -47,7 +47,7 @@ export default class ListTous extends Component {
                                     <td>{obj.nom}</td>
                                     <td>{obj.prix}</td>
                                     <td>{obj.description}</td>
-                                    <td><img width="150px" height="50px" src={'http://localhost:8000/photos/'+obj.photo_profil} alt="pdp" />
+                                    <td><img width="150px" height="50px" src={'http://localhost:8081/photos/'+obj.photo_profil} alt="pdp" />
                                     </td>
                                     <td>
                                         <button>Ajouter au panier</button>
